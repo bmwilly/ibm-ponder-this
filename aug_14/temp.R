@@ -3,8 +3,8 @@ require(mcsm)
 require(data.table)
 
 answers <- seq(51, 150)
-# answers <- as.data.frame(seq(51, 150))
-# answers$P <- 1/nrow(answers)
+answers <- as.data.frame(seq(51, 150))
+answers$P <- 1/nrow(answers)
 
 unif <- runif(n = 10000, min = 51, max = 150)
 plot(unif)
@@ -18,5 +18,7 @@ dt[J(unif[1]), .I]
 calc_cost <- function(answer) {
   
   cost <- 0
-  
+  for (k in 0:(n-1)) {
+    
+  }
 }
