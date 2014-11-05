@@ -26,52 +26,53 @@ odds <- df %>%
 df <- rbind(evens, odds) %>% 
   mutate(prob = p/sum(p))
 
-toss_coin <- function(p) {
-  rnum <- runif(1)
-  if (rnum <= p) {
-    return('T')
-  } else {
-    return('H')
-  }
-}
+
+
+
+# c1 <- combn(c(p1,p2,q1,q2), 1)
+# c2 <- combn(c(p1,p2,q1,q2), 2)
+# c3 <- combn(c(p1,p2,q1,q2), 3)
+# 
+# twos <- NULL
+# for (col in 1:ncol(c2)) {
+#   p <- prod(c2[,col])
+#   twos <- c(twos, p)
+#   print('j')
+# }
+# 
+# threes <- NULL
+# for (col in 1:ncol(c3)) {
+#   threes <- c(threes, prod(c3[,col]))
+# }
+# 
+# nums <- c(p1,p2,q1,q2,twos,threes)
+# 
+# poss <- combn(nums, 2)
+# df <- as.data.frame(t(poss)) %>% 
+#   mutate(sum = V1 + V2)
+# 
+# vals <- c(1/8,11/16,3/16)
+# 
+# df1 <- df %>% 
+#   filter(sum %in% vals) %>% 
+#   group_by(sum) %>% 
+#   summarize()
+# 
+# df2 <- as.data.frame(nums) %>% 
+#   filter(nums %in% vals) %>% 
+#   group_by(nums) %>% 
+#   summarize()
 
 
 ### Example run ###
-p_1 = 1/2
-p_2 = 1/4
+df <- data.frame(letter = c('alpha', 'beta', 'gamma')) %>% 
+  mutate(prob = c(1/8, 11/16, 3/16))
 
-# We toss the first coin p_1
-toss1 <- toss_coin(p_1)
-# If it's tails, we toss the second coin
-if (toss1 == 'T') {
-  toss2 <- toss_coin(p_2)
-  # If it's tails
-  if (toss2 == 'T') {
-    # We generate alpha
-    choice <- 'alpha'
-  } else {
-    # We toss p_1 and 
-    toss3 <- toss_coin(p_1)
-    # If it's tails
-    if (toss3 == 'T') {
-      # We choose beta
-      beta <- df$prob[df$letter == 'beta']
-    } else {
-      # We choose gamma
-      gamma <- df$prob[df$letter == 'gamma']
-    }
-  }
-} else {
-  # We choose beta
-  beta <- df$prob[df$letter == 'beta']
-}
+p1 = 1/2
+p2 = 1/4
+q1 = 1-p1
+q2 = 1-p2
 
-alpha_output <- paste('Alpha:', alpha)
-beta_output <- paste('Beta:', beta)
-gamma_output <- paste('Gamma:', gamma)
 
-output <- paste('Using the schema above yields:', alpha_output, beta_output, gamma_output, sep = '\n')
-cat(output)
 
-tmp <- paste('asdf', 'qwer', sep = '\n')
-cat(tmp)
+
